@@ -1,0 +1,62 @@
+@use "@material/image-list";
+@use "@material/list/mdc-list";
+@use "@material/menu-surface/mdc-menu-surface";
+@use "@material/menu/mdc-menu";
+@use "@material/drawer/mdc-drawer";
+@use "@material/fab/mdc-fab";
+
+*{
+    margin: 0px;
+    padding: 0px;
+}
+.ste-gallery{
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+}
+.my-masonry-image-list {
+    list-style-type: none;
+    width: 100%;
+    @include image-list.masonry-columns(3,20px);
+    .mdc-image-list__item{
+        img{
+            width: 100%;
+        }
+    }
+  }
+
+  .app-fab--absolute {
+    position: fixed;
+    bottom: 1rem;
+    right: 1rem;
+  }
+
+  .disabled{
+    display: none;
+  }
+  
+  @media(min-width: 1024px) {
+     .app-fab--absolute {
+      bottom: 1.5rem;
+      right: 1.5rem;
+    }
+  }
+  
+  @media (max-width: 599px) {
+    .ste-gallery{
+      width: 90%;
+    }
+    .my-masonry-image-list {
+      @include image-list.masonry-columns(1);
+    }
+  }
+
+  @mixin themable($theme-name, $body-bg) {
+    .#{$theme-name}{
+      background-color: $body-bg;
+    }
+  }
+
+  @include themable(light, #ffffff);
+  @include themable(dark, #0c0f12);
+
